@@ -1,4 +1,4 @@
-import { getArticles } from "../utils/api";
+import { getArticles } from "../utils/api.js";
 import { useState, useEffect } from "react";
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'

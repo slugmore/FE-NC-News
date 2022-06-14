@@ -17,11 +17,19 @@ code {
 
 h1 {
   background: radial-gradient(ellipse at right bottom, #EEB1BF 5%, #d42dab 25%, #4d1d63 50%, #030243 100%);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: xxx-large;
   background-color: rgb(62, 122, 141);
   color: azure;
   padding: 3%;
   text-align: center;
+}
+
+.header-pic {
+  max-width: 10%;
+  height: auto;
+  display: flex;
+  border-radius: 50%;
 }
 
 .nav-bar {
@@ -43,3 +51,8 @@ h1 {
 .card-body {
   color: aliceblue;
 }
+
+/* .comments-btn {
+  display: flex;
+  justify-content: right;
+} */

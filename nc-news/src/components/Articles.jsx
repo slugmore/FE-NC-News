@@ -34,7 +34,7 @@ const Articles = () => {
                     </footer>
               <Button variant="success">👍</Button>
               <Button variant="danger">👎</Button>
-              <Button>Comments ({article.comment_count})</Button>
+              <Button className="comments-btn">Comments ({article.comment_count})</Button>
               <p>( 0 Votes )</p>
                   </blockquote>
 

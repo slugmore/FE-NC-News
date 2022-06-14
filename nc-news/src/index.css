@@ -5,9 +5,41 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: rgb(18, 18, 18);
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
+}
+
+h1 {
+  background: radial-gradient(ellipse at right bottom, #EEB1BF 5%, #d42dab 25%, #4d1d63 50%, #030243 100%);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(62, 122, 141);
+  color: azure;
+  padding: 3%;
+  text-align: center;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-evenly;
+  background: radial-gradient(ellipse at left top, #EEB1BF 5%, #d42dab 25%, #4d1d63 50%, #030243 100%);
+  padding: 1%;
+  color: aliceblue;
+  margin-bottom: 10px;
+}
+
+.card-header {
+  color: azure;
+  background-color: #4d1d63;
+  opacity: 80%;
+  font-size: larger;
+}
+
+.card-body {
+  color: aliceblue;
 }

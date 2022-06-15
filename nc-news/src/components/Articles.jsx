@@ -1,55 +1,47 @@
-import { getArticles } from "../utils/api.js";
+import { getArticles, getCommentsByArticleID } from "../utils/api.js";
 import { useState, useEffect } from "react";
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-import { Dropdown } from "react-bootstrap";
+import {Route, Routes, Link} from "react-router-dom"
+import { ArticleNav } from "./ArticleNav.jsx";
+import Spinner from 'react-bootstrap/Spinner'
+import { ArticleDisplay } from "./ArticleDisplay.jsx";
+
 
 const Articles = () => {
 
+    const [isLoading, setIsLoading] = useState(true)
     const [articles, setArticles] = useState([])
+    const [topicQuery, setTopicQuery] = useState('')
+    
+    
 
     useEffect(() => {
-        getArticles().then((res) => {
+        getArticles(topicQuery).then((res) => {
             setArticles(res)
+            setIsLoading(false)
         })  
-    }, [])
+    }, [topicQuery])
 
-    console.log(articles, "here");
 
+    if(isLoading) return <div className="spinner"><Spinner variant="info" animation="border" /></div>
     return (
+    <>
 
-        <ul>
+<div className="dropdown-btn">
+<ArticleNav setTopicQuery={setTopicQuery}/>
+</div>
 
-            {articles.map((article) => {
-                
-                return <Card key={article.article_id} >
-                <Card.Header className="card-header">{article.title}</Card.Header>
-                <Card.Body>
-                  <blockquote className="blockquote mb-0">
-                    <p>
-                     {article.body}
-                    </p>
-                    <footer className="blockquote-footer">
-                      {article.created_at}<cite title="Source Title"> by {article.author}</cite>
-                    </footer>
-              <Button variant="success">👍</Button>
-              <Button variant="danger">👎</Button>
-              <Button className="comments-btn">Comments ({article.comment_count})</Button>
-              <p>( 0 Votes )</p>
-                  </blockquote>
+<Routes>
+    <Route path="/articles/football" element={<ArticleDisplay  />} />
+</Routes>
 
-                </Card.Body>
-              </Card>
-            })}
+<ArticleDisplay articles={articles}/>
 
-
-        </ul>
-
-
+    </>
 
     )
 
 
 }
+
 
 export default Articles;

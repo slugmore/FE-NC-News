@@ -6,7 +6,8 @@ import { useState, useEffect } from "react";
 import { ArticleDisplay } from './ArticleDisplay.jsx';
 
 
-export const ArticleNav = ({setTopicQuery}) => {
+
+export const ArticleNav = () => {
 
     const [topicName, setTopicName] = useState('SELECT TOPIC')
     // const [isLoading, setIsLoading] = useState(true)
@@ -14,13 +15,21 @@ export const ArticleNav = ({setTopicQuery}) => {
     return (
         <>
     <DropdownButton variant="dark" id="dropdown-item-button" title={topicName}>
-  <Dropdown.Item onClick={() => [setTopicQuery(''), setTopicName('ALL TOPICS')]} as="button">All</Dropdown.Item>
-  <Link to="/articles/football">
-  <Dropdown.Item onClick={() => [setTopicQuery('?topic=football'), setTopicName('FOOTBALL')]} as="button">Football</Dropdown.Item>
+  
+  <Link to="/articles">
+  <Dropdown.Item onClick={() => [setTopicName('ALL TOPICS')]} as="button">All</Dropdown.Item>
   </Link>
-  <Dropdown.Item onClick={() => [setTopicQuery('?topic=cooking'), setTopicName('COOKING')]} as="button">Cooking</Dropdown.Item>
-  <Dropdown.Item onClick={() => [setTopicQuery('?topic=coding'), setTopicName('CODING')]} as="button">Coding</Dropdown.Item>
+  <Link to="/articles/football">
+  <Dropdown.Item onClick={() => [setTopicName('FOOTBALL')]} as="button">Football</Dropdown.Item>
+  </Link>
+  <Link to="/articles/cooking">
+  <Dropdown.Item onClick={() => [setTopicName('COOKING')]} as="button">Cooking</Dropdown.Item>
+  </Link>
+  <Link to="/articles/coding">
+  <Dropdown.Item onClick={() => [setTopicName('CODING')]} as="button">Coding</Dropdown.Item>
+  </Link>
 </DropdownButton>
+
 
 <DropdownButton variant="dark" id="dropdown-item-button" title="SORT BY">
   <Dropdown.Item as="button">Action</Dropdown.Item>
@@ -28,10 +37,6 @@ export const ArticleNav = ({setTopicQuery}) => {
   <Dropdown.Item as="button">Something else</Dropdown.Item>
 </DropdownButton>
       
-
-<Routes>
-    <Route path="/articles/football" element={<ArticleDisplay  />} />
-</Routes>
   </>
     )
 }

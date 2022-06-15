@@ -1,25 +1,24 @@
 import { getArticles } from "../utils/api.js";
 import { useState, useEffect } from "react";
-import {Route, Routes, Link} from "react-router-dom"
+import {Route, Routes, Link, useParams} from "react-router-dom"
 import { ArticleNav } from "./ArticleNav.jsx";
 import Spinner from 'react-bootstrap/Spinner'
 import { ArticleDisplay } from "./ArticleDisplay.jsx";
 
 
 const Articles = () => {
-
+    
     const [isLoading, setIsLoading] = useState(true)
     const [articles, setArticles] = useState([])
-    const [topicQuery, setTopicQuery] = useState('')
     
-    
+    const {category_name} = useParams()
 
     useEffect(() => {
-        getArticles(topicQuery).then((res) => {
+        getArticles(category_name).then((res) => {
             setArticles(res)
             setIsLoading(false)
         })  
-    }, [topicQuery])
+    }, [category_name])
 
 
     if(isLoading) return <div className="spinner"><Spinner variant="info" animation="border" /></div>
@@ -27,20 +26,12 @@ const Articles = () => {
     <>
 
 <div className="dropdown-btn">
-<ArticleNav setTopicQuery={setTopicQuery}/>
+<ArticleNav />
 </div>
-
-<Routes>
-    <Route path="/articles/football" element={<ArticleDisplay  />} />
-</Routes>
-
 <ArticleDisplay articles={articles}/>
 
     </>
-
-    )
-
-
+ )
 }
 
 

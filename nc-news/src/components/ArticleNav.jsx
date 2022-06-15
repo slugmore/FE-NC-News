@@ -3,9 +3,8 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import {Route, Routes, Link} from "react-router-dom"
 import { useState, useEffect } from "react";
-import { getArticles } from "../utils/api.js";
 import { ArticleDisplay } from './ArticleDisplay.jsx';
-import Articles from './Articles.jsx';
+
 
 export const ArticleNav = ({setTopicQuery}) => {
 

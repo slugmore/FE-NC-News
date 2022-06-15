@@ -1,4 +1,4 @@
-import { getArticles, getCommentsByArticleID } from "../utils/api.js";
+import { getArticles } from "../utils/api.js";
 import { useState, useEffect } from "react";
 import {Route, Routes, Link} from "react-router-dom"
 import { ArticleNav } from "./ArticleNav.jsx";

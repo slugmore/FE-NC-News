@@ -1,5 +1,3 @@
-import { getCommentsByArticleID } from "../utils/api.js";
-import { useState, useEffect } from "react";
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'

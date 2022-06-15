@@ -9,14 +9,6 @@ import Spinner from 'react-bootstrap/Spinner'
 
 export const ArticleDisplay = ({articles}) => {
 
-    const [commentID, setCommentID] = useState('')
-    const [comments, setComments] = useState([])
-
-    useEffect(() => {
-        getCommentsByArticleID(commentID).then((res) => {
-            setComments(res)
-        })  
-    }, [commentID])
 
 
     return (
@@ -53,32 +45,10 @@ export const ArticleDisplay = ({articles}) => {
 
 
 <Accordion>
-<Accordion.Item onClick={() => {setCommentID(article.article_id)}} eventKey="1">
-    <Accordion.Header>View Comments ({article.comment_count})</Accordion.Header>
+<Accordion.Item eventKey="1">
+    <Accordion.Header>View Comments</Accordion.Header>
     <Accordion.Body>
-        <ul className="comments">
-      {comments.map((comment) => {
-          return (
-         
-          <Card key={comment.id}>
-  <Card.Header>👤 {comment.author}</Card.Header>
-  <Card.Body>
-    <Card.Title>{comment.created_at}</Card.Title>
-    <Card.Text>
-      {comment.body}
-    </Card.Text>
-     
-     <section className="vote-btn">
-    <Button variant="success">👍</Button>
-    <p>({comment.votes} Votes)</p>
-    <Button variant="danger">👎</Button>
-     </section>  
-           
-  </Card.Body>
-</Card>)
-      })}
-
-      </ul>
+        
     </Accordion.Body>
   </Accordion.Item>
 </Accordion>

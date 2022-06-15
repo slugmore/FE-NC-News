@@ -1,55 +1,38 @@
 import { getArticles } from "../utils/api.js";
 import { useState, useEffect } from "react";
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-import { Dropdown } from "react-bootstrap";
+import {Route, Routes, Link, useParams} from "react-router-dom"
+import { ArticleNav } from "./ArticleNav.jsx";
+import Spinner from 'react-bootstrap/Spinner'
+import { ArticleDisplay } from "./ArticleDisplay.jsx";
+
 
 const Articles = () => {
-
+    
+    const [isLoading, setIsLoading] = useState(true)
     const [articles, setArticles] = useState([])
+    
+    const {category_name} = useParams()
 
     useEffect(() => {
-        getArticles().then((res) => {
+        getArticles(category_name).then((res) => {
             setArticles(res)
+            setIsLoading(false)
         })  
-    }, [])
+    }, [category_name])
 
-    console.log(articles, "here");
 
+    if(isLoading) return <div className="spinner"><Spinner variant="info" animation="border" /></div>
     return (
+    <>
 
-        <ul>
+<div className="dropdown-btn">
+<ArticleNav />
+</div>
+<ArticleDisplay articles={articles}/>
 
-            {articles.map((article) => {
-                
-                return <Card key={article.article_id} >
-                <Card.Header className="card-header">{article.title}</Card.Header>
-                <Card.Body>
-                  <blockquote className="blockquote mb-0">
-                    <p>
-                     {article.body}
-                    </p>
-                    <footer className="blockquote-footer">
-                      {article.created_at}<cite title="Source Title"> by {article.author}</cite>
-                    </footer>
-              <Button variant="success">👍</Button>
-              <Button variant="danger">👎</Button>
-              <Button className="comments-btn">Comments ({article.comment_count})</Button>
-              <p>( 0 Votes )</p>
-                  </blockquote>
-
-                </Card.Body>
-              </Card>
-            })}
-
-
-        </ul>
-
-
-
-    )
-
-
+    </>
+ )
 }
+
 
 export default Articles;

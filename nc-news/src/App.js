@@ -5,6 +5,9 @@ import Home from "./components/Home"
 import Articles from "./components/Articles"
 import Users from "./components/Users"
 
+
+
+
 function App() {
   return (
     <>
@@ -27,6 +30,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/articles" element={<Articles />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/articles/:category_name" element={<Articles />} />
       </Routes>
 
 

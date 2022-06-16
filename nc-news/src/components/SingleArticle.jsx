@@ -28,7 +28,13 @@ export const SingleArticle = () => {
     return (
 
         <>
-
+<section className='back-btn'>
+    <Link to="/articles">
+              <Button variant='dark' > <span class="material-symbols-outlined">
+arrow_back
+</span></Button>
+    </Link>
+    </section>
            
             <Card key={article.article_id} >
                 <Card.Header className="card-header">👤 - {article.author}</Card.Header>
@@ -44,13 +50,25 @@ export const SingleArticle = () => {
                       {article.created_at}<cite title="Source Title"> by {article.author}</cite>
                     </footer>
                <section className="vote-btn">
-              <Button variant="success">👍</Button>
+              <Button variant="success"><span class="material-symbols-outlined">
+thumb_up
+</span></Button>
               <p>( 0 Votes )</p>
-              <Button variant="danger">👎</Button>
+              <Button variant="danger"><span class="material-symbols-outlined">
+thumb_down
+</span></Button>
               </section>
               
               <div className="comments-btn">
               <>
+<Accordion>
+<Accordion.Item eventKey="1">
+    <Accordion.Header>View Comments</Accordion.Header>
+    <Accordion.Body>
+        
+    </Accordion.Body>
+  </Accordion.Item>
+</Accordion>
   <FloatingLabel controlId="floatingTextarea" label="Leave Comment" className="comment">
     <Form.Control as="textarea" placeholder="Leave a comment here" />
   </FloatingLabel>
@@ -60,14 +78,6 @@ export const SingleArticle = () => {
 
 
 
-<Accordion>
-<Accordion.Item eventKey="1">
-    <Accordion.Header>View Comments</Accordion.Header>
-    <Accordion.Body>
-        
-    </Accordion.Body>
-  </Accordion.Item>
-</Accordion>
               </div>
                   </blockquote>
 
@@ -78,13 +88,7 @@ send
               </Card>
 
 
-  <section className='back-btn'>
-    <Link to="/articles">
-              <Button variant='dark' > <span class="material-symbols-outlined">
-arrow_back
-</span></Button>
-    </Link>
-    </section>
+  
 
         </>
     )

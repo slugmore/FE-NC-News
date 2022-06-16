@@ -28,26 +28,17 @@ export const ArticleDisplay = ({ articles }) => {
                   <cite title="Source Title"> by {article.author}</cite>
                 </footer>
                 <section className="vote-btn">
-                  <Button variant="success">👍</Button>
+                  <Button variant="success"><span class="material-symbols-outlined">
+thumb_up
+</span></Button>
                   <p>( 0 Votes )</p>
-                  <Button variant="danger">👎</Button>
+                  <Button variant="danger"><span class="material-symbols-outlined">
+thumb_down
+</span></Button>
                 </section>
 
                 <div className="comments-btn">
-                  <>
-                    <FloatingLabel
-                      controlId="floatingTextarea"
-                      label="Leave Comment"
-                      className="comment"
-                    >
-                      <Form.Control
-                        as="textarea"
-                        placeholder="Leave a comment here"
-                      />
-                    </FloatingLabel>
-                  </>
-
-                  <Button variant="dark">Submit Comment</Button>
+                  
 
                   <Accordion>
                     <Accordion.Item eventKey="1">

@@ -6,13 +6,21 @@ import Accordion from 'react-bootstrap/Accordion'
 import Spinner from 'react-bootstrap/Spinner'
 import { Link, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { getArticleByID } from '../utils/api'
+import { getArticleByID,getCommentsByArticleID } from '../utils/api'
 
 export const SingleArticle = () => {
 
 
   const [article, setArticle] = useState({})
   const [isLoading, setIsLoading] = useState(true)
+  const [commentID, setCommentID] = useState('')
+  const [comments, setComments] = useState([])
+
+    useEffect(() => {
+        getCommentsByArticleID(commentID).then((res) => {
+            setComments(res)
+        })  
+    }, [commentID])
 
   const {article_id} = useParams()
 
@@ -63,14 +71,46 @@ thumb_down
               
               <div className="comments-btn">
               <>
-<Accordion>
-<Accordion.Item eventKey="1">
-    <Accordion.Header>View Comments</Accordion.Header>
+
+
+              <Accordion>
+<Accordion.Item onClick={() => {setCommentID(article.article_id)}} eventKey="1">
+    <Accordion.Header>View Comments ({article.comment_count})</Accordion.Header>
     <Accordion.Body>
-        
+        <ul className="comments">
+      {comments.map((comment) => {
+          return (
+         
+          <Card key={comment.id}>
+  <Card.Header>🗣 - {comment.author}</Card.Header>
+  <Card.Body>
+    <Card.Title>{comment.created_at}</Card.Title>
+    <Card.Text>
+      {comment.body}
+    </Card.Text>
+     
+     <section className="vote-btn">
+    <Button variant="success"><span class="material-symbols-outlined">
+arrow_upward
+</span></Button>
+    <h3 className={comment.votes > 0 ? "green-txt" : "red-txt"}><span class="material-symbols-outlined">
+thumbs_up_down
+</span>({comment.votes})</h3>
+    <Button variant="danger"><span class="material-symbols-outlined">
+arrow_downward
+</span></Button>
+     </section>  
+           
+  </Card.Body>
+</Card>)
+      })}
+
+      </ul>
     </Accordion.Body>
   </Accordion.Item>
 </Accordion>
+
+
   <FloatingLabel controlId="floatingTextarea" label="Leave Comment" className="comment">
     <Form.Control as="textarea" placeholder="Leave a comment here" />
   </FloatingLabel>

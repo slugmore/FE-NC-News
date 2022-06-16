@@ -101,3 +101,11 @@ h4 {
   display: grid;
   grid-template-columns: auto auto;
 }
+
+.green-txt {
+color: rgb(48, 200, 48);
+}
+
+.red-txt {
+  color: red;
+}

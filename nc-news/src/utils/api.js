@@ -20,5 +20,13 @@ export const getArticleByID = (ID) => {
     })
 }
 
+export const getCommentsByArticleID = (ID) => {
 
+    return newsApi
+    .get(`/articles/${ID}/comments`)
+    .then(({data}) => {
+        return data.comments;
+    })
+
+}
 

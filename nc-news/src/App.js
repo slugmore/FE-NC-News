@@ -4,24 +4,36 @@ import Header from "./components/Header"
 import Home from "./components/Home"
 import Articles from "./components/Articles"
 import Users from "./components/Users"
+import { SingleArticle } from './components/SingleArticle';
+import {useState} from 'react'
 
 
 
 
 function App() {
+
+
+ 
+
   return (
     <>
     <Header />
     <section>
           <nav className="nav-bar">
             <Link className="nav-title" to="/">
-              Home
+            <span class="material-symbols-outlined">
+home
+</span>
             </Link>
             <Link className="nav-title" to="/articles">
-              Articles
+            <span class="material-symbols-outlined">
+menu_book
+</span>
             </Link>
             <Link className="nav-title" to="/users">
-              Users
+            <span class="material-symbols-outlined">
+person_search
+</span>
             </Link>
           </nav>
       </section>
@@ -31,6 +43,7 @@ function App() {
           <Route path="/articles" element={<Articles />} />
           <Route path="/users" element={<Users />} />
           <Route path="/articles/:category_name" element={<Articles />} />
+          <Route path="/article/:article_id" element={<SingleArticle />} />
       </Routes>
 
 

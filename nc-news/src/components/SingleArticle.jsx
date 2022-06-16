@@ -53,7 +53,9 @@ arrow_back
               <Button variant="success"><span class="material-symbols-outlined">
 thumb_up
 </span></Button>
-              <p>( 0 Votes )</p>
+<h3><span class="material-symbols-outlined">
+thumbs_up_down
+</span> ( 0 )</h3>
               <Button variant="danger"><span class="material-symbols-outlined">
 thumb_down
 </span></Button>

@@ -1,4 +1,4 @@
-import { getArticles } from "../utils/api.js";
+import { getArticleByID, getArticles } from "../utils/api.js";
 import { useState, useEffect } from "react";
 import {Route, Routes, Link, useParams} from "react-router-dom"
 import { ArticleNav } from "./ArticleNav.jsx";
@@ -8,10 +8,13 @@ import { ArticleDisplay } from "./ArticleDisplay.jsx";
 
 const Articles = () => {
     
+    
+
     const [isLoading, setIsLoading] = useState(true)
     const [articles, setArticles] = useState([])
     
     const {category_name} = useParams()
+   
 
     useEffect(() => {
         getArticles(category_name).then((res) => {

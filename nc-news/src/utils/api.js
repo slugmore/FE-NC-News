@@ -22,11 +22,24 @@ export const getArticleByID = (ID) => {
 
 export const getCommentsByArticleID = (ID) => {
 
+    
     return newsApi
     .get(`/articles/${ID}/comments`)
     .then(({data}) => {
         return data.comments;
     })
+    
+}
 
+
+export const changeVotes = (ID, num) => {
+
+    // console.log(num);
+    
+    return newsApi
+    .patch(`/articles/${ID}`, {inc_votes: num})
+    .then(({ data }) => {
+        return data
+    })
 }
 

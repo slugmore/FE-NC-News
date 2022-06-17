@@ -26,6 +26,8 @@ h1 {
   font-style: italic;
 }
 
+
+
 h4 {
   font-style: italic;
   font-size: large;
@@ -35,8 +37,14 @@ h4 {
 .header-pic {
   max-width: 10%;
   height: auto;
-  display: flex;
   border-radius: 50%;
+  border:rgb(18, 18, 18) 3px solid;
+  float: right;
+}
+
+.banner-img {
+  max-width: 100%;
+  height: auto;
 }
 
 .nav-bar {
@@ -103,9 +111,9 @@ h4 {
 }
 
 .green-txt {
-color: rgb(48, 200, 48);
+color: rgb(70, 194, 70);
 }
 
 .red-txt {
-  color: red;
+  color: rgb(203, 35, 35);
 }
